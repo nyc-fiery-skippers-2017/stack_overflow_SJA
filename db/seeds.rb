@@ -14,7 +14,7 @@ users = []
 end
 
 
-4.times do
+6.times do
   question = Question.create(title: Faker::Hipster.words(3), body: Faker::Hipster.paragraph, user: users.sample)
   4.times do
     question.votes.create(voter: users.sample, vote_choice: boo.sample)
@@ -26,7 +26,7 @@ end
 
 
 
-4.times do
+6.times do
   answer = Answer.create(answer_string: Faker::Hipster.words(3), responder: users.sample)
   4.times do
     answer.votes.create(voter: users.sample, vote_choice: boo.sample)
