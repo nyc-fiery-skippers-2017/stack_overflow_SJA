@@ -11,10 +11,20 @@
 <h4> <%= @question.answers.count %></h4>
 
 <%if current_user%>
-<form class="" action="index.html" method="post">
-  <label for="answer_string"></label>
-  <input type="text" name="answer_string" value="Put your answer here!">
+<form class="" action="/questions/show" method="post">
+  <label for="answer_string">New Answer</label>
+  <input type="text" name="answer[answer_string]" value="">
   <input type="submit" name="submit" value="submit">
+</form>
+
+
+<br>
+<form class="" action="/questions/voteup" method="post">
+  <input type="submit" name="votes[votable_type]" value="VOTE UP">
+</form>
+
+<form class="" action="/questions/votedown" method="post">
+  <input type="submit" name="votes[votable_type]" value="VOTE DOWN">
 </form>
 <%end%>
 
