@@ -21,7 +21,7 @@ answers = []
   4.times do
     question.votes.create(user: users.sample, vote_choice: boo.sample)
     4.times do
-      question.comments.create(comment_string: Faker::Hipster.sentence, commenter: users.sample )
+      question.comments.create(comment_string: Faker::Hipster.sentence, user: users.sample )
       questions << question
     end
   end
@@ -34,7 +34,7 @@ end
   4.times do
     answer.votes.create(user: users.sample, vote_choice: boo.sample)
     (4).times do
-      answer.comments.create(comment_string: Faker::Hipster.sentence, commenter: users.sample)
+      answer.comments.create(comment_string: Faker::Hipster.sentence, user: users.sample)
       answers << answer
     end
   end
