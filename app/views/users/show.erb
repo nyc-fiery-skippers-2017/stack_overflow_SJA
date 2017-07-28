@@ -1,31 +1,17 @@
 
 <%= erb :'partials/_navbar', layout: false%>
 <div class="row">
-
     <div class="container">
-    <h3>WELCOME TO YOUR PROFILE :)</h3>
-    <h4><%= @user.username %> 's subscriptions</h4>
-
-
-
-    <% @user.questions.each do |q| %>
-    <h5> This is the title for the Question : <%= q.title %></h5>
-    <h5> This is the body of the Question : <%= q.body %></h5>
+      <h3>WELCOME TO YOUR PROFILE :)</h3>
+      <h4><%= @user.username %> 's subscriptions</h4>
+      <% @user.questions.each do |q| %>
+        <h5> This is the title for the Question : <%= q.title %></h5>
+        <h5> This is the body of the Question : <%= q.body %></h5>
       <% end %>
-
-
       <% @user.answers.each do |a| %>
-      <h5> This is the answers made by the user : <%= a.answer_string %> </h5>
-        <% end %>
-
-
-    <h5> The total number of questions made my user is : <%= @user.questions.count %> </h5>
-
-    <h5> The total number of questions made my user is : <%= @user.answers.count %> </h5>
-
-
-
-
-
-</div>
+        <h5> This is the answers made by the user : <%= a.answer_string %> </h5>
+      <% end %>
+      <h5> The total number of questions made my user is : <%= @user.questions.count %> </h5>
+      <h5> The total number of answers made my user is : <%= @user.answers.count %> </h5>
+  </div>
 </div>

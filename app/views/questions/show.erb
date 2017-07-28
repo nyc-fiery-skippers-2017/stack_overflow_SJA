@@ -19,6 +19,16 @@ Answer.new =
   <input type="text" name="answer_string" value="Put your answer here!">
   <input type="submit" name="submit" value="submit">
 </form>
+
+
+<br>
+<form class="" action="/questions/voteup" method="post">
+  <input type="submit" name="votes[votable_type]" value="VOTE UP">
+</form>
+
+<form class="" action="/questions/votedown" method="post">
+  <input type="submit" name="votes[votable_type]" value="VOTE DOWN">
+</form>
 <%end%>
 
 </div>

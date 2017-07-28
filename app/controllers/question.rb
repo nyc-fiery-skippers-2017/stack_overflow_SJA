@@ -1,5 +1,4 @@
 get '/questions' do
-
     erb :'questions/index'
 end
 
@@ -30,5 +29,20 @@ delete '/questions/:id' do
   if question
     question.destroy
     redirect '/questions'
+  end
+end
+
+post '/questions/show' do
+  @user = current_user
+  @question = 
+  @answer = Answer.new(params[:answer])
+  @answer.user_id = @user.id
+
+
+  if @answer.save
+    redirect "/"
+  else
+    @answer.errors.full_messages
+    erb :index
   end
 end
