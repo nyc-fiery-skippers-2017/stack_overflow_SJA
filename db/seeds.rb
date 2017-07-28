@@ -30,7 +30,7 @@ end
 
 
 6.times do
-  answer = Answer.create(answer_string: Faker::Hipster.words, responder: users.sample, question: questions.sample)
+  answer = Answer.create(answer_string: Faker::Hacker.say_something_smart, responder: users.sample, question: questions.sample)
   4.times do
     answer.votes.create(voter: users.sample, vote_choice: boo.sample)
     (4).times do
