@@ -19,7 +19,7 @@ answers = []
 6.times do
   question = Question.create(title: Faker::Hipster.words, body: Faker::Hipster.paragraph, user: users.sample)
   4.times do
-    question.votes.create(voter: users.sample, vote_choice: boo.sample)
+    question.votes.create(user: users.sample, vote_choice: boo.sample)
     4.times do
       question.comments.create(comment_string: Faker::Hipster.sentence, commenter: users.sample )
       questions << question
@@ -32,7 +32,7 @@ end
 6.times do
   answer = Answer.create(answer_string: Faker::Hipster.words, user: users.sample, question: questions.sample)
   4.times do
-    answer.votes.create(voter: users.sample, vote_choice: boo.sample)
+    answer.votes.create(user: users.sample, vote_choice: boo.sample)
     (4).times do
       answer.comments.create(comment_string: Faker::Hipster.sentence, commenter: users.sample)
       answers << answer
