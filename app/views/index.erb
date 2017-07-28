@@ -1,23 +1,22 @@
-<div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+<%= erb :'partials/_navbar', layout: false%>
+<div class="row">
+  <div class="container homepage-container">
+    <div class="col s8 offset-s2">
+      <h5 class="text-left">Top Questions</h5>
+      <hr>
+    </div>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+    <% @questions.each do |question| %>
+      <div class="col s8 offset-s2 question-container">
+          <div class="card-content">
+            <div class="card-vote-count col s2">  <%= question.votes.count() %> <br> Views   </div>
+            <div class="card-answer-count col s2">  <%= question.answers.count() %> <br> Answers   </div>
+            <div class="card-title col s8"> <a href="/questions/<%= question.id %>" class=""> Question title: <%= question.title %> </a>
+              <!-- <p class="card-body"> Question body:   <%= question.body %> </p> -->
+              <p class="card-modify-time"> Modified at :   <%= question.updated_at %> |  By User: <%= question.user.username %> </p>
+            </div>
+          </div>
+      </div>
+      <% end %>
+    </div>
 </div>
