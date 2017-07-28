@@ -1,0 +1,19 @@
+<div class="">
+
+
+  <form class="" action="/questions" method="post">
+    <input type="hidden" name="question[user_id]" value='<%= current_user.id%>' >
+    <div class="">
+      <label for="title">Title</label>
+      <input required
+      type="text" name="question[title]" value="" id="title">
+    </div>
+    <div class="">
+      <label for="body">Body</label>
+      <input type="text" name="question[body]" value="" id="body"
+      required>
+    </div>
+
+    <input type="submit" name="" value="Create">
+  </form>
+</div>
