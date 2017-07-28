@@ -4,7 +4,7 @@ class CreateVotes < ActiveRecord::Migration[5.0]
       t.boolean :vote_choice
       t.references :voteable, polymorphic: true, index: true
 
-      t.references :voter, index: true
+      t.references :user, index: true
 
       t.timestamps
     end
