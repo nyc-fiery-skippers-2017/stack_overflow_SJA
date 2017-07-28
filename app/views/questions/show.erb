@@ -1,0 +1,22 @@
+<%= erb :'partials/_navbar', layout: false%>
+<div class="row">
+
+<div class="container">
+<h3> Question Number <%= @question.id%></h3>
+<h4>Title:  <%= @question.title %></h4>
+<h4>Body: <%= @question.body%></h4>
+
+<h4> answers :<%= @question.answers %></h4>
+
+<h4> <%= @question.answers.count %></h4>
+
+<%if current_user%>
+<form class="" action="index.html" method="post">
+  <label for="answer_string"></label>
+  <input type="text" name="answer_string" value="Put your answer here!">
+  <input type="submit" name="submit" value="submit">
+</form>
+<%end%>
+
+</div>
+</div>
