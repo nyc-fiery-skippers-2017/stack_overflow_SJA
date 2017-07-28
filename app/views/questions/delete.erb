@@ -1,0 +1,17 @@
+<div class="">
+  <ul>
+    <% if @questions.length == 0%>
+      <h4></h4>
+    <% else %>
+      <% @questions.each do |question| %>
+        <li><a href="/question/<%= question.id%>"><%= question.title%></a>  <a href="/questions<%= question.id%>/edit">Edit</a></li>
+        <form class="" action="/books/<%= book.id%>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" name="" value="Delete">
+        </form>
+      <% end %>
+    <% end %>
+
+  </ul>
+    <a href="/questions/new">Add a new question</a>
+</div>
