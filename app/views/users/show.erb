@@ -2,9 +2,29 @@
 <%= erb :'partials/_navbar', layout: false%>
 <div class="row">
 
-<div class="container">
-<h3>Profile of <%= @user.email%></h3>
-<h4><%= @user.username %> 's subscriptions</h4>
+    <div class="container">
+    <h3>Profile of <%= @user.email%></h3>
+    <h4><%= @user.username %> 's subscriptions</h4>
+
+    
+      <% @user.questions.each do |q| %>
+      <h3> <%= q.title %></h3>
+      <h3> <%= q.body %></h3>
+        <% end %>
+
+
+
+      <% @user.answers.each do |a| %>
+      <h3> <%= a.answer_string %></h3>
+        <% end %>
+
+
+        <%= @user.questions.count %>
+
+
+        <%= @user.answers.count %>
+
+
 
 
 </div>
