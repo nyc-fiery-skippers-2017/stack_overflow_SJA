@@ -1,9 +1,8 @@
 <div class="">
 
-  <%= erb :'_errors'%>
-
 
   <form class="" action="/questions" method="post">
+    <input type="hidden" name="question[user_id]" value='<%= current_user.id%>' >
     <div class="">
       <label for="title">Title</label>
       <input required

@@ -3,7 +3,7 @@ get '/questions' do
     erb :'questions/index'
 end
 
-get 'questions/new' do
+get '/questions/new' do
   erb :'questions/new'
 end
 
@@ -14,9 +14,11 @@ end
 
 
 post '/questions' do
+  # binding.pry
   @question = Question.new(params[:question])
+
   if @question.save
-    redirect "/questions"
+    redirect "/questions/#{@question.id}"
   else
     @errors = @question.errors.full_messages
     erb :'/questions/new'

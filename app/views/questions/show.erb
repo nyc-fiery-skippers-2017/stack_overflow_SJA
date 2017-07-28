@@ -3,15 +3,18 @@
 
 <div class="container">
 <h3> Question Number <%= @question.id%></h3>
-<h4>Title:  <%= @question.title %></h4>
-<h4>Body: <%= @question.body%></h4>
+<h4>  <%= @question.title %></h4>
+<br>
+<h5> Author: <%=@question.user.username %> </h5>
+<h5>= <%= @question.body%></h5>
+<br>
+<h5> answers:<%= @question.answers %></h5>
 
-<h4> answers :<%= @question.answers %></h4>
-
-<h4> <%= @question.answers.count %></h4>
+<h6>answer count:  <%= @question.answers.count %></h6>
 
 <%if current_user%>
-<form class="" action="index.html" method="post">
+Answer.new =
+<form class="" action="/questions/<%= :id %>" method="post">
   <label for="answer_string"></label>
   <input type="text" name="answer_string" value="Put your answer here!">
   <input type="submit" name="submit" value="submit">
