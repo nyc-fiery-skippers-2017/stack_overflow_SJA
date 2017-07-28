@@ -1,4 +1,6 @@
 get '/' do
-  # Look in app/views/index.erb
+  @questions = Question.all
+  @votes = Vote.all
+  @answer = Answer.all
   erb :index
 end
