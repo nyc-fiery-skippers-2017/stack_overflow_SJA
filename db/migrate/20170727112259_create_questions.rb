@@ -6,5 +6,6 @@ class CreateQuestions < ActiveRecord::Migration[5.0]
       t.references :user, index: true
 
       t.timestamps
+    end
   end
 end

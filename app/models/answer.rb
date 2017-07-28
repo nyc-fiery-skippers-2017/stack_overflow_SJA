@@ -1,7 +1,8 @@
 class Answer < ApplicationRecord
   # Remember to create a migration!
-  belongs_to :responder, source :user
+  belongs_to :responder, class_name: "User"
   has_many :comments, as: :commentable
+  has_many :votes, as: :voteable
 
-  validates :answer, {presence: true}
+  validates :answer_string, {presence: true}
 end
