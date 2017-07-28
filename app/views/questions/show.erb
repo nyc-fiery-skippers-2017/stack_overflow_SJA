@@ -11,18 +11,25 @@
 <h5> answers:<%= @question.answers %></h5>
 
 <h6>answer count:  <%= @question.answers.count %></h6>
+<% @question.answers.each do |answer|%>
+<h6> <%= answer.answer_string %> </h6>
+<h6> <%= answer.user.username %> </h6>
+<% end%>
+
+
 
 <%if current_user%>
-Answer.new =
-<form class="" action="/questions/<%= :id %>" method="post">
+<form class="" action="/questions/<%= @question.id %>" method="post">
+  <input type="hidden" name="answer[user_id]" value='<%= current_user.id%>' >
+
   <label for="answer_string"></label>
-  <input type="text" name="answer_string" value="Put your answer here!">
+  <input type="text" name="answer[answer_string]" value="Put your answer here!">
   <input type="submit" name="submit" value="submit">
 </form>
 
 
 <br>
-<form class="" action="/questions/voteup" method="post">
+<form class="" action="/questions/<%=@question.id%>/voteup" method="post">
   <input type="submit" name="votes[votable_type]" value="VOTE UP">
 </form>
 

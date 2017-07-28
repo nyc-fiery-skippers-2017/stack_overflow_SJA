@@ -7,13 +7,15 @@ get '/questions/new' do
 end
 
 get '/questions/:id' do
-  @question = Question.find(params[:id]) #define instance variable for view
+  @question = Question.find(params[:id])
+  @answer = Answer.find(params[:id])#define instance variable for view
   erb :'questions/show' #show single user view
 end
 
 
 post '/questions' do
   # binding.pry
+  puts params
   @question = Question.new(params[:question])
 
   if @question.save
@@ -21,6 +23,19 @@ post '/questions' do
   else
     @errors = @question.errors.full_messages
     erb :'/questions/new'
+  end
+end
+
+post '/questions/:id' do
+  @question = Question.find(params[:id])
+  @answer = Answer.new(params[:answer])
+  @answer.question_id = @question.id
+  # puts  params[:id]
+  if @answer.save
+    redirect "/questions/#{@question.id}"
+  else
+    @errors = @answer.errors.full_messages
+    erb :'/questions/show'
   end
 end
 
@@ -34,15 +49,29 @@ end
 
 post '/questions/show' do
   @user = current_user
-  @question = 
   @answer = Answer.new(params[:answer])
   @answer.user_id = @user.id
-
-
   if @answer.save
     redirect "/"
   else
     @answer.errors.full_messages
     erb :index
+  end
+end
+
+post '/questions/:id/voteup' do
+  @question = Question.find(params[:id])
+  vote = Vote.new(voteable: @question, vote_choice: true, user: current_user)
+  if vote.save
+    redirect "/questions/#{@question.id}"
+  end
+end
+
+
+post '/questions/:id/votedown' do
+  @question = Question.find(params[:id])
+  vote = Vote.new(voteable: @question, vote_choice: false, user: current_user)
+  if vote.save
+    redirect "/questions/#{@question.id}"
   end
 end
