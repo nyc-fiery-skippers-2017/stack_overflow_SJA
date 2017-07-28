@@ -13,13 +13,16 @@ users = []
   users << User.create(username: Faker::GameOfThrones.character, email: Faker::Internet.email, password: "password")
 end
 
+questions = []
+answers = []
 
 6.times do
-  question = Question.create(title: Faker::Hipster.words(3), body: Faker::Hipster.paragraph, user: users.sample)
+  question = Question.create(title: Faker::Hipster.words, body: Faker::Hipster.paragraph, user: users.sample)
   4.times do
     question.votes.create(voter: users.sample, vote_choice: boo.sample)
     4.times do
-      question.comments.create(comment_string: Faker::Hipster.sentence(4), commenter: users.sample )
+      question.comments.create(comment_string: Faker::Hipster.sentence, commenter: users.sample )
+      questions << question
     end
   end
 end
@@ -27,11 +30,12 @@ end
 
 
 6.times do
-  answer = Answer.create(answer_string: Faker::Hipster.words(3), responder: users.sample)
+  answer = Answer.create(answer_string: Faker::Hipster.words, responder: users.sample, question: questions.sample)
   4.times do
     answer.votes.create(voter: users.sample, vote_choice: boo.sample)
-    4.times do
-      answer.comments.create(comment_string: Faker::Hipster.sentence(4), commenter: users.sample )
+    (4).times do
+      answer.comments.create(comment_string: Faker::Hipster.sentence, commenter: users.sample)
+      answers << answer
     end
   end
 end
